@@ -9,9 +9,17 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const STAT_VALUES = [
+  topics.length,
+  topics.flatMap(t => t.files.notes).length,
+  topics.flatMap(t => t.files.questions).length,
+  topics.flatMap(t => t.files.reviewQuestions).length,
+]
+
 export function Home() {
   const heroRef = useRef<HTMLDivElement>(null)
   const searchRef = useRef<HTMLInputElement>(null)
+  const statRefs = useRef<(HTMLSpanElement | null)[]>([])
   const [searchQuery, setSearchQuery] = useState('')
   const [activeId, setActiveId] = useState<string>('')
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'notes' | 'questions' | 'review'>('all')
@@ -82,7 +90,7 @@ export function Home() {
     )
   }, [searchQuery, categoryFilter])
 
-  // Hero animation — runs once on mount
+  // Hero animation + stat counters — runs once on mount
   useEffect(() => {
     if (heroRef.current) {
       gsap.fromTo(
@@ -91,6 +99,19 @@ export function Home() {
         { opacity: 1, y: 0, duration: 1.2, stagger: 0.15, ease: "power4.out", delay: 0.1 }
       )
     }
+
+    // Count up from 0
+    statRefs.current.forEach((el, i) => {
+      if (!el) return
+      const obj = { val: 0 }
+      gsap.to(obj, {
+        val: STAT_VALUES[i],
+        duration: 1.5,
+        delay: 0.4 + i * 0.1,
+        ease: 'power2.out',
+        onUpdate: () => { el.textContent = Math.round(obj.val).toString() },
+      })
+    })
   }, [])
 
   // Scroll animations — fast, non-blocking reveals
@@ -205,13 +226,15 @@ export function Home() {
           {/* Stats */}
           <div className="flex items-center gap-6 mb-6 flex-wrap">
             {[
-              { label: 'Topics', value: topics.length },
-              { label: 'Notes', value: topics.flatMap(t => t.files.notes).length },
-              { label: 'Homeworks', value: topics.flatMap(t => t.files.questions).length },
-              { label: 'Review Sessions', value: topics.flatMap(t => t.files.reviewQuestions).length },
-            ].map(stat => (
+              { label: 'Topics' },
+              { label: 'Notes' },
+              { label: 'Homeworks' },
+              { label: 'Review Sessions' },
+            ].map((stat, i) => (
               <div key={stat.label} className="text-center">
-                <div className="text-xl font-semibold text-white tabular-nums">{stat.value}</div>
+                <div className="text-xl font-semibold text-white tabular-nums">
+                  <span ref={el => { statRefs.current[i] = el }}>0</span>
+                </div>
                 <div className="text-[9px] uppercase tracking-widest text-[var(--color-text-muted)] font-bold mt-0.5">{stat.label}</div>
               </div>
             ))}
