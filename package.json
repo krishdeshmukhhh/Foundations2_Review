@@ -1,0 +1,40 @@
+{
+  "name": "temp-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node generate_data.cjs",
+    "dev": "vite",
+    "prebuild": "node generate_data.cjs",
+    "build": "tsc -b && vite build && npm run copy-pdfs",
+    "copy-pdfs": "cp -r Typed_Notes Typed_Questions Exam_Review_Questions Exam_Review_Solutions Typed_Solutions dist/ 2>null || copy Typed_Notes dist\\Typed_Notes /E /I /Y && copy Typed_Questions dist\\Typed_Questions /E /I /Y && copy Exam_Review_Questions dist\\Exam_Review_Questions /E /I /Y && copy Exam_Review_Solutions dist\\Exam_Review_Solutions /E /I /Y && copy Typed_Solutions dist\\Typed_Solutions /E /I /Y",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.9.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-router-dom": "^7.14.2",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.2.4",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.2.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.5.0",
+    "tailwindcss": "^4.2.4",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.58.2",
+    "vite": "^8.0.10"
+  }
+}
