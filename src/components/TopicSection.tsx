@@ -1,4 +1,5 @@
 import { FileCard } from './FileCard'
+import { Check } from 'lucide-react'
 
 interface FileDef {
   title: string
@@ -18,9 +19,11 @@ interface TopicSectionProps {
   title: string
   files: TopicFiles
   order: number
+  isCompleted: boolean
+  onToggle: () => void
 }
 
-export function TopicSection({ id, title, files, order }: TopicSectionProps) {
+export function TopicSection({ id, title, files, order, isCompleted, onToggle }: TopicSectionProps) {
   const hasNotes = files.notes.length > 0
   const hasQuestions = files.questions.length > 0
   const hasReview = files.reviewQuestions.length > 0
@@ -30,15 +33,30 @@ export function TopicSection({ id, title, files, order }: TopicSectionProps) {
   const formatOrder = (num: number) => num.toString().padStart(2, '0')
 
   return (
-    <section id={id} className="scroll-mt-32 mb-28 relative topic-section pl-6 md:pl-12 border-l border-[var(--color-border)]">
-      {/* Order number */}
-      <div className="absolute -left-1.5 top-0 w-3 h-3 rounded-full bg-[var(--color-border)] mt-[6px]" />
+    <section id={id} className={`scroll-mt-32 mb-28 relative topic-section pl-6 md:pl-12 border-l transition-colors duration-300 ${isCompleted ? 'border-white/20' : 'border-[var(--color-border)]'}`}>
+      {/* Order number / completion dot */}
+      <div
+        className={`absolute -left-1.5 top-0 w-3 h-3 rounded-full mt-[6px] flex items-center justify-center transition-colors duration-300 ${isCompleted ? 'bg-white' : 'bg-[var(--color-border)]'}`}
+      />
       <div className="absolute -left-8 top-0 text-xs font-bold text-[var(--color-text-muted)] tracking-wider tabular-nums mt-0.5 hidden md:block">
         {formatOrder(order)}
       </div>
 
-      <div className="mb-10">
-        <h2 className="text-2xl font-semibold tracking-tight text-[var(--color-text-primary)]">{title}</h2>
+      <div className="mb-10 flex items-center justify-between">
+        <h2 className={`text-2xl font-semibold tracking-tight transition-colors duration-300 ${isCompleted ? 'text-[var(--color-text-muted)] line-through decoration-[var(--color-text-muted)]' : 'text-[var(--color-text-primary)]'}`}>
+          {title}
+        </h2>
+        <button
+          onClick={onToggle}
+          title={isCompleted ? 'Mark as incomplete' : 'Mark as complete'}
+          className={`ml-4 shrink-0 w-7 h-7 border flex items-center justify-center transition-all duration-200 ${
+            isCompleted
+              ? 'bg-white border-white text-black'
+              : 'border-[var(--color-border)] text-transparent hover:border-[var(--color-border-hover)] hover:text-[var(--color-text-muted)]'
+          }`}
+        >
+          <Check size={13} />
+        </button>
       </div>
 
       <div className="space-y-10">

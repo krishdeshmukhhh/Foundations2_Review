@@ -2,7 +2,8 @@ import { useEffect, useRef, useState, useMemo } from 'react'
 import { topics } from '../data/topics'
 import { TopicSection } from '../components/TopicSection'
 import { FileCard } from '../components/FileCard'
-import { Search, X } from 'lucide-react'
+import { Search, X, Check } from 'lucide-react'
+import { useCompletion } from '../hooks/useCompletion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -14,6 +15,7 @@ export function Home() {
   const [searchQuery, setSearchQuery] = useState('')
   const [activeId, setActiveId] = useState<string>('')
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'notes' | 'questions' | 'review'>('all')
+  const { completed, toggle, isCompleted } = useCompletion()
 
   // ⌘K / Ctrl+K to focus search
   useEffect(() => {
@@ -152,20 +154,21 @@ export function Home() {
         <nav className="flex flex-col gap-0">
           {topics.map(topic => {
             const isActive = activeId === topic.id
+            const done = isCompleted(topic.id)
             const count = fileCount(topic)
             return (
               <a
                 key={topic.id}
                 href={`#${topic.id}`}
-                className={`flex items-center justify-between px-2 py-1 text-[11px] rounded transition-all font-medium ${isActive
-                  ? 'text-white bg-white/5'
-                  : 'text-[var(--color-text-secondary)] hover:text-white hover:bg-white/[0.03]'
-                  }`}
+                className={`flex items-center justify-between px-2 py-1 text-[11px] rounded transition-all font-medium ${
+                  isActive ? 'text-white bg-white/5' : done ? 'text-[var(--color-text-muted)] hover:text-white hover:bg-white/[0.03]' : 'text-[var(--color-text-secondary)] hover:text-white hover:bg-white/[0.03]'
+                }`}
               >
-                <span className="truncate">{topic.title}</span>
-                <span className={`text-[9px] tabular-nums ml-2 shrink-0 ${isActive ? 'text-[var(--color-text-secondary)]' : 'text-[var(--color-text-muted)]'}`}>
-                  {count}
-                </span>
+                <span className={`truncate ${done ? 'line-through decoration-[var(--color-text-muted)]' : ''}`}>{topic.title}</span>
+                {done
+                  ? <Check size={10} className="ml-2 shrink-0 text-white/50" />
+                  : <span className="text-[9px] tabular-nums ml-2 shrink-0 text-[var(--color-text-muted)]">{count}</span>
+                }
               </a>
             )
           })}
@@ -200,7 +203,7 @@ export function Home() {
           </p>
 
           {/* Stats */}
-          <div className="flex items-center gap-4 mb-10">
+          <div className="flex items-center gap-6 mb-6 flex-wrap">
             {[
               { label: 'Topics', value: topics.length },
               { label: 'Notes', value: topics.flatMap(t => t.files.notes).length },
@@ -212,6 +215,27 @@ export function Home() {
                 <div className="text-[9px] uppercase tracking-widest text-[var(--color-text-muted)] font-bold mt-0.5">{stat.label}</div>
               </div>
             ))}
+          </div>
+
+          {/* Completion progress */}
+          <div className="mb-10 max-w-md">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[9px] uppercase tracking-widest font-bold text-[var(--color-text-muted)]">
+                Progress
+              </span>
+              <span className="text-[9px] uppercase tracking-widest font-bold text-[var(--color-text-muted)] tabular-nums">
+                {completed.size} / {topics.length}
+                {completed.size === topics.length && completed.size > 0 && (
+                  <span className="ml-2 text-white">· All done! 🎉</span>
+                )}
+              </span>
+            </div>
+            <div className="h-[2px] bg-[var(--color-border)] w-full">
+              <div
+                className="h-full bg-white transition-all duration-500 ease-out"
+                style={{ width: `${topics.length > 0 ? (completed.size / topics.length) * 100 : 0}%` }}
+              />
+            </div>
           </div>
 
           {/* Search Bar */}
@@ -277,7 +301,15 @@ export function Home() {
         ) : (
           <div id="topics" className="space-y-4">
             {filteredTopics.map((topic, index) => (
-              <TopicSection key={topic.id} id={topic.id} title={topic.title} files={topic.files} order={index + 1} />
+              <TopicSection
+                key={topic.id}
+                id={topic.id}
+                title={topic.title}
+                files={topic.files}
+                order={index + 1}
+                isCompleted={isCompleted(topic.id)}
+                onToggle={() => toggle(topic.id)}
+              />
             ))}
           </div>
         )}
