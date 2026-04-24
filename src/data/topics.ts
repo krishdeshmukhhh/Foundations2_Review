@@ -5,13 +5,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Asymptotic Notation Typed",
+          "title": "Asymptotic Notation",
           "path": "/Typed_Notes/CSE2331_Asymptotic_Notation_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Asymptotic Notation Homework",
+          "title": "Asymptotic Notation Homework",
           "path": "/Typed_Questions/CSE2331_Asymptotic_Notation_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Asymptotic_Notation_Homework_Solutions.pdf"
         }
@@ -19,7 +19,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Asymptotic Notation Homework Solutions",
+          "title": "Asymptotic Notation Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Asymptotic_Notation_Homework_Solutions.pdf"
         }
       ]
@@ -32,13 +32,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Binary Search Trees Typed",
+          "title": "Binary Search Trees",
           "path": "/Typed_Notes/CSE2331_Binary_Search_Trees_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Binary Search Trees Homework",
+          "title": "Binary Search Trees Homework",
           "path": "/Typed_Questions/CSE2331_Binary_Search_Trees_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Binary_Search_Trees_Homework_Solutions.pdf"
         }
@@ -46,7 +46,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Binary Search Trees Homework Solutions",
+          "title": "Binary Search Trees Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Binary_Search_Trees_Homework_Solutions.pdf"
         }
       ]
@@ -59,13 +59,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Graph Algorithms Typed",
+          "title": "Graph Algorithms",
           "path": "/Typed_Notes/CSE2331_Graph_Algorithms_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Graph Algorithms Homework",
+          "title": "Graph Algorithms Homework",
           "path": "/Typed_Questions/CSE2331_Graph_Algorithms_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Graph_Algorithms_Homework_Solutions.pdf"
         }
@@ -73,7 +73,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Graph Algorithms Homework Solutions",
+          "title": "Graph Algorithms Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Graph_Algorithms_Homework_Solutions.pdf"
         }
       ]
@@ -86,13 +86,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Hashing Typed",
+          "title": "Hashing",
           "path": "/Typed_Notes/CSE2331_Hashing_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Hashing Homework",
+          "title": "Hashing Homework",
           "path": "/Typed_Questions/CSE2331_Hashing_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Hashing_Homework_Solutions.pdf"
         }
@@ -100,7 +100,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Hashing Homework Solutions",
+          "title": "Hashing Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Hashing_Homework_Solutions.pdf"
         }
       ]
@@ -113,13 +113,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Heaps Typed",
+          "title": "Heaps",
           "path": "/Typed_Notes/CSE2331_Heaps_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Heaps Homework",
+          "title": "Heaps Homework",
           "path": "/Typed_Questions/CSE2331_Heaps_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Heaps_Homework_Solutions.pdf"
         }
@@ -127,7 +127,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Heaps Homework Solutions",
+          "title": "Heaps Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Heaps_Homework_Solutions.pdf"
         }
       ]
@@ -140,13 +140,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Loop Analysis Typed",
+          "title": "Loop Analysis",
           "path": "/Typed_Notes/CSE2331_Loop_Analysis_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Loop Analysis Homework",
+          "title": "Loop Analysis Homework",
           "path": "/Typed_Questions/CSE2331_Loop_Analysis_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Loop_Analysis_Homework_Solutions.pdf"
         }
@@ -154,7 +154,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Loop Analysis Homework Solutions",
+          "title": "Loop Analysis Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Loop_Analysis_Homework_Solutions.pdf"
         }
       ]
@@ -167,13 +167,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Minimum Spanning Tree Typed",
+          "title": "Minimum Spanning Tree",
           "path": "/Typed_Notes/CSE2331_Minimum_Spanning_Tree_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Greedy Graph Algorithms Homework",
+          "title": "Greedy Graph Algorithms Homework",
           "path": "/Typed_Questions/CSE2331_Greedy_Graph_Algorithms_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Greedy_Graph_Algorithms_Homework_Solutions.pdf"
         }
@@ -181,7 +181,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Greedy Graph Algorithms Homework Solutions",
+          "title": "Greedy Graph Algorithms Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Greedy_Graph_Algorithms_Homework_Solutions.pdf"
         }
       ]
@@ -194,13 +194,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 NP Completeness Typed",
+          "title": "NP Completeness",
           "path": "/Typed_Notes/CSE2331_NP_Completeness_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 NP Completeness Homework",
+          "title": "NP Completeness Homework",
           "path": "/Typed_Questions/CSE2331_NP_Completeness_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_NP_Completeness_Homework_Solutions.pdf"
         }
@@ -208,7 +208,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 NP Completeness Homework Solutions",
+          "title": "NP Completeness Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_NP_Completeness_Homework_Solutions.pdf"
         }
       ]
@@ -221,13 +221,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Probabilistic Analysis Typed",
+          "title": "Probabilistic Analysis",
           "path": "/Typed_Notes/CSE2331_Probabilistic_Analysis_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Probabilistic Analysis Homework",
+          "title": "Probabilistic Analysis Homework",
           "path": "/Typed_Questions/CSE2331_Probabilistic_Analysis_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Probabilistic_Analysis_Homework_Solutions.pdf"
         }
@@ -235,7 +235,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Probabilistic Analysis Homework Solutions",
+          "title": "Probabilistic Analysis Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Probabilistic_Analysis_Homework_Solutions.pdf"
         }
       ]
@@ -248,13 +248,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Quicksort Typed",
+          "title": "Quicksort",
           "path": "/Typed_Notes/CSE2331_Quicksort_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 QuickSort and Probabilistic Analysis Homework",
+          "title": "QuickSort and Probabilistic Analysis Homework",
           "path": "/Typed_Questions/CSE2331_QuickSort_and_Probabilistic_Analysis_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_QuickSort_and_Probabilistic_Analysis_Homework_Solutions.pdf"
         }
@@ -262,7 +262,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 QuickSort and Probabilistic Analysis Homework Solutions",
+          "title": "QuickSort and Probabilistic Analysis Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_QuickSort_and_Probabilistic_Analysis_Homework_Solutions.pdf"
         }
       ]
@@ -275,13 +275,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Recurrence Relations Typed",
+          "title": "Recurrence Relations",
           "path": "/Typed_Notes/CSE2331_Recurrence_Relations_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Recurrence Relations Homework",
+          "title": "Recurrence Relations Homework",
           "path": "/Typed_Questions/CSE2331_Recurrence_Relations_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Recurrence_Relations_Homework_Solutions.pdf"
         }
@@ -289,7 +289,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Recurrence Relations Homework Solutions",
+          "title": "Recurrence Relations Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Recurrence_Relations_Homework_Solutions.pdf"
         }
       ]
@@ -302,13 +302,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Red Black Trees Typed",
+          "title": "Red Black Trees",
           "path": "/Typed_Notes/CSE2331_Red_Black_Trees_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Red black Tree Homework",
+          "title": "Red black Tree Homework",
           "path": "/Typed_Questions/CSE2331_Red_black_Tree_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Red_black_Tree_Homework.pdf"
         }
@@ -316,7 +316,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Red black Tree Homework Solutions",
+          "title": "Red black Tree Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Red_black_Tree_Homework.pdf"
         }
       ]
@@ -329,7 +329,7 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Shortest Path Typed",
+          "title": "Shortest Path",
           "path": "/Typed_Notes/CSE2331_Shortest_Path_Typed.pdf"
         }
       ],
@@ -345,13 +345,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Table Doubling Typed",
+          "title": "Table Doubling",
           "path": "/Typed_Notes/CSE2331_Table_Doubling_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Table Doubling Homework",
+          "title": "Table Doubling Homework",
           "path": "/Typed_Questions/CSE2331_Table_Doubling_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Table_Doubling_Homework_Solutions.pdf"
         }
@@ -359,7 +359,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Table Doubling Homework Solutions",
+          "title": "Table Doubling Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Table_Doubling_Homework_Solutions.pdf"
         }
       ]
@@ -372,13 +372,13 @@ export const topics = [
     "files": {
       "notes": [
         {
-          "title": "CSE2331 Union Find Typed",
+          "title": "Union Find",
           "path": "/Typed_Notes/CSE2331_Union_Find_Typed.pdf"
         }
       ],
       "questions": [
         {
-          "title": "CSE2331 Union Find Homework",
+          "title": "Union Find Homework",
           "path": "/Typed_Questions/CSE2331_Union_Find_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Union_Find_Homework_Solutions.pdf"
         }
@@ -386,7 +386,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Union Find Homework Solutions",
+          "title": "Union Find Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Union_Find_Homework_Solutions.pdf"
         }
       ]
@@ -400,7 +400,7 @@ export const topics = [
       "notes": [],
       "questions": [
         {
-          "title": "CSE2331 Data Structures Homework",
+          "title": "Data Structures Homework",
           "path": "/Typed_Questions/CSE2331_Data_Structures_Homework.pdf",
           "solutionPath": "/Typed_Solutions/CSE2331_Data_Structures_Homework_Solutions.pdf"
         }
@@ -408,7 +408,7 @@ export const topics = [
       "reviewQuestions": [],
       "solutions": [
         {
-          "title": "CSE2331 Data Structures Homework Solutions",
+          "title": "Data Structures Homework Solutions",
           "path": "/Typed_Solutions/CSE2331_Data_Structures_Homework_Solutions.pdf"
         }
       ]
@@ -423,14 +423,14 @@ export const topics = [
       "questions": [],
       "reviewQuestions": [
         {
-          "title": "CSE2331 Final Exam Review 1",
+          "title": "Final Exam Review 1",
           "path": "/Exam_Review_Questions/CSE2331_Final_Exam_Review_1.pdf",
           "solutionPath": "/Exam_Review_Solutions/CSE2331_Final_Exam_Review_1_Solutions.pdf"
         }
       ],
       "solutions": [
         {
-          "title": "CSE2331 Final Exam Review 1 Solutions",
+          "title": "Final Exam Review 1 Solutions",
           "path": "/Exam_Review_Solutions/CSE2331_Final_Exam_Review_1_Solutions.pdf"
         }
       ]
@@ -445,14 +445,14 @@ export const topics = [
       "questions": [],
       "reviewQuestions": [
         {
-          "title": "CSE2331 Final Exam Review 2",
+          "title": "Final Exam Review 2",
           "path": "/Exam_Review_Questions/CSE2331_Final_Exam_Review_2.pdf",
           "solutionPath": "/Exam_Review_Solutions/CSE2331_Final_Exam_Review_2_Solutions.pdf"
         }
       ],
       "solutions": [
         {
-          "title": "CSE2331 Final Exam Review 2 Solutions",
+          "title": "Final Exam Review 2 Solutions",
           "path": "/Exam_Review_Solutions/CSE2331_Final_Exam_Review_2_Solutions.pdf"
         }
       ]
@@ -467,14 +467,14 @@ export const topics = [
       "questions": [],
       "reviewQuestions": [
         {
-          "title": "CSE2331 Final Exam Review 3",
+          "title": "Final Exam Review 3",
           "path": "/Exam_Review_Questions/CSE2331_Final_Exam_Review_3.pdf",
           "solutionPath": "/Exam_Review_Solutions/CSE2331_Final_Exam_Review_3_Solutions.pdf"
         }
       ],
       "solutions": [
         {
-          "title": "CSE2331 Final Exam Review 3 Solutions",
+          "title": "Final Exam Review 3 Solutions",
           "path": "/Exam_Review_Solutions/CSE2331_Final_Exam_Review_3_Solutions.pdf"
         }
       ]
@@ -489,14 +489,14 @@ export const topics = [
       "questions": [],
       "reviewQuestions": [
         {
-          "title": "CSE2331 Midterm 1 Review Session",
+          "title": "Midterm 1 Review Session",
           "path": "/Exam_Review_Questions/CSE2331_Midterm_1_Review_Session.pdf",
           "solutionPath": "/Exam_Review_Solutions/CSE2331_Midterm_1_Review_Session_Solutions.pdf"
         }
       ],
       "solutions": [
         {
-          "title": "CSE2331 Midterm 1 Review Session Solutions",
+          "title": "Midterm 1 Review Session Solutions",
           "path": "/Exam_Review_Solutions/CSE2331_Midterm_1_Review_Session_Solutions.pdf"
         }
       ]
@@ -511,14 +511,14 @@ export const topics = [
       "questions": [],
       "reviewQuestions": [
         {
-          "title": "CSE2331 Midterm 2 Review Session",
+          "title": "Midterm 2 Review Session",
           "path": "/Exam_Review_Questions/CSE2331_Midterm_2_Review_Session.pdf",
           "solutionPath": "/Exam_Review_Solutions/CSE2331_Midterm_2_Review_Session_Solutions_acd.pdf"
         }
       ],
       "solutions": [
         {
-          "title": "CSE2331 Midterm 2 Review Session Solutions",
+          "title": "Midterm 2 Review Session Solutions",
           "path": "/Exam_Review_Solutions/CSE2331_Midterm_2_Review_Session_Solutions_acd.pdf"
         }
       ]
@@ -533,14 +533,14 @@ export const topics = [
       "questions": [],
       "reviewQuestions": [
         {
-          "title": "CSE2331 Midterm 3 Review Session",
+          "title": "Midterm 3 Review Session",
           "path": "/Exam_Review_Questions/CSE2331_Midterm_3_Review_Session.pdf",
           "solutionPath": "/Exam_Review_Solutions/CSE2331_Midterm_3_Review_Session_Solutions.pdf"
         }
       ],
       "solutions": [
         {
-          "title": "CSE2331 Midterm 3 Review Session Solutions",
+          "title": "Midterm 3 Review Session Solutions",
           "path": "/Exam_Review_Solutions/CSE2331_Midterm_3_Review_Session_Solutions.pdf"
         }
       ]
@@ -555,14 +555,14 @@ export const topics = [
       "questions": [],
       "reviewQuestions": [
         {
-          "title": "CSE2331 Midterm 4 Review Session",
+          "title": "Midterm 4 Review Session",
           "path": "/Exam_Review_Questions/CSE2331_Midterm_4_Review_Session.pdf",
           "solutionPath": "/Exam_Review_Solutions/CSE2331_Midterm_4_Review_Session_Solutions.pdf"
         }
       ],
       "solutions": [
         {
-          "title": "CSE2331 Midterm 4 Review Session Solutions",
+          "title": "Midterm 4 Review Session Solutions",
           "path": "/Exam_Review_Solutions/CSE2331_Midterm_4_Review_Session_Solutions.pdf"
         }
       ]
@@ -577,14 +577,14 @@ export const topics = [
       "questions": [],
       "reviewQuestions": [
         {
-          "title": "CSE2331 Midterm 5 Review Session",
+          "title": "Midterm 5 Review Session",
           "path": "/Exam_Review_Questions/CSE2331_Midterm_5_Review_Session.pdf",
           "solutionPath": "/Exam_Review_Solutions/CSE2331_Midterm_5_Review_Session_Solutions.pdf"
         }
       ],
       "solutions": [
         {
-          "title": "CSE2331 Midterm 5 Review Session Solutions",
+          "title": "Midterm 5 Review Session Solutions",
           "path": "/Exam_Review_Solutions/CSE2331_Midterm_5_Review_Session_Solutions.pdf"
         }
       ]

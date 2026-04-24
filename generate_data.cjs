@@ -48,9 +48,23 @@ function addFileToTopic(topicKey, category, title, filePath, solutionPath = unde
   topicsMap.get(topicKey).files[category].push(fileEntry);
 }
 
+function cleanTitle(filename) {
+  return filename
+    .replace('.pdf', '')
+    .replace('CSE2331_', '')
+    .replace(/_Typed$/, '')
+    .replace(/_Homework$/, ' Homework')
+    .replace(/_Homework_Solutions$/, ' Solutions')
+    .replace(/_Solutions$/, ' Solutions')
+    .replace(/_Review_Session$/, ' Review Session')
+    .replace(/_Review_Session_Solutions.*$/, ' Review Session Solutions')
+    .replace(/_/g, ' ')
+    .trim()
+}
+
 for (const file of allFiles.notes) {
   const key = getTopicKey(file);
-  addFileToTopic(key, 'notes', file.replace('.pdf', '').replace(/_/g, ' '), `/${dirs.notes}/${file}`);
+  addFileToTopic(key, 'notes', cleanTitle(file), `/${dirs.notes}/${file}`);
 }
 
 for (const file of allFiles.questions) {
@@ -59,7 +73,7 @@ for (const file of allFiles.questions) {
   const hasSolution = allFiles.solutions.includes(solutionFile);
   
   const fileObj = { 
-    title: file.replace('.pdf', '').replace(/_/g, ' '), 
+    title: cleanTitle(file), 
     path: `/${dirs.questions}/${file}`
   };
   
@@ -81,7 +95,7 @@ for (const file of allFiles.reviewQuestions) {
   const solutionFile = allFiles.reviewSolutions.find(f => f.startsWith(solutionPrefix));
   
   const fileObj = {
-    title: file.replace('.pdf', '').replace(/_/g, ' '),
+    title: cleanTitle(file),
     path: `/${dirs.reviewQuestions}/${file}`
   };
 
