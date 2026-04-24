@@ -5,12 +5,12 @@
   --color-accent: #f4f4f5;
   --color-bg-primary: #050505;
   --color-bg-secondary: #0a0a0a;
-  --color-bg-tertiary: #121212;
+  --color-bg-tertiary: #0d0d0d;
   --color-text-primary: #ededed;
   --color-text-secondary: #888888;
-  --color-text-muted: #555555;
-  --color-border: #1f1f1f;
-  --color-border-hover: #333333;
+  --color-text-muted: #444444;
+  --color-border: #1a1a1a;
+  --color-border-hover: #2e2e2e;
 }
 
 :root {
@@ -24,35 +24,42 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  /* Subtle dot grid */
+  background-image: radial-gradient(circle, #1f1f1f 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-bg-primary);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-secondary);
+/* Fade the dot grid at the top so the hero reads clean */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(96, 165, 250, 0.06) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 40% at 50% 0%, rgba(5, 5, 5, 0.9) 0%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-html {
-  scroll-behavior: smooth;
+#root {
+  position: relative;
+  z-index: 1;
 }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg-primary); }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #444; }
+
+html { scroll-behavior: smooth; }
 
 .glass {
-  background: rgba(5, 5, 5, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-border);
 }
 
 ::selection {
-  background: var(--color-text-primary);
-  color: var(--color-bg-primary);
+  background: #fff;
+  color: #000;
 }
