@@ -8,7 +8,7 @@
     "dev": "vite",
     "prebuild": "node generate_data.cjs",
     "build": "tsc -b && vite build && npm run copy-pdfs",
-    "copy-pdfs": "cp -r Typed_Notes Typed_Questions Exam_Review_Questions Exam_Review_Solutions Typed_Solutions dist/ 2>null || copy Typed_Notes dist\\Typed_Notes /E /I /Y && copy Typed_Questions dist\\Typed_Questions /E /I /Y && copy Exam_Review_Questions dist\\Exam_Review_Questions /E /I /Y && copy Exam_Review_Solutions dist\\Exam_Review_Solutions /E /I /Y && copy Typed_Solutions dist\\Typed_Solutions /E /I /Y",
+    "copy-pdfs": "node copy_pdfs.cjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
