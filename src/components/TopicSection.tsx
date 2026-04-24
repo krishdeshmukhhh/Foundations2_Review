@@ -42,20 +42,21 @@ export function TopicSection({ id, title, files, order, isCompleted, onToggle }:
         {formatOrder(order)}
       </div>
 
-      <div className="mb-10 flex items-center justify-between">
+      <div className="mb-10 flex items-start justify-between gap-4">
         <h2 className={`text-2xl font-semibold tracking-tight transition-colors duration-300 ${isCompleted ? 'text-[var(--color-text-muted)] line-through decoration-[var(--color-text-muted)]' : 'text-[var(--color-text-primary)]'}`}>
           {title}
         </h2>
         <button
           onClick={onToggle}
           title={isCompleted ? 'Mark as incomplete' : 'Mark as complete'}
-          className={`ml-4 shrink-0 w-7 h-7 border flex items-center justify-center transition-all duration-200 ${
+          className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 text-[10px] uppercase tracking-widest font-bold border transition-all duration-200 ${
             isCompleted
               ? 'bg-white border-white text-black'
-              : 'border-[var(--color-border)] text-transparent hover:border-[var(--color-border-hover)] hover:text-[var(--color-text-muted)]'
+              : 'border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-white hover:text-white'
           }`}
         >
-          <Check size={13} />
+          <Check size={11} />
+          {isCompleted ? 'Done' : 'Mark done'}
         </button>
       </div>
 
