@@ -33,7 +33,7 @@ function getTopicKey(filename) {
   return name;
 }
 
-function addFileToTopic(topicKey, category, title, filePath) {
+function addFileToTopic(topicKey, category, title, filePath, solutionPath = undefined) {
   if (!topicsMap.has(topicKey)) {
     topicsMap.set(topicKey, {
       id: topicKey.toLowerCase().replace(/_/g, '-'),
@@ -41,7 +41,11 @@ function addFileToTopic(topicKey, category, title, filePath) {
       files: { notes: [], questions: [], reviewQuestions: [], solutions: [] }
     });
   }
-  topicsMap.get(topicKey).files[category].push({ title, path: filePath });
+  const fileEntry = { title, path: filePath };
+  if (solutionPath) {
+    fileEntry.solutionPath = solutionPath;
+  }
+  topicsMap.get(topicKey).files[category].push(fileEntry);
 }
 
 for (const file of allFiles.notes) {
@@ -65,7 +69,7 @@ for (const file of allFiles.questions) {
     fileObj.solutionPath = `/${dirs.solutions}/${file}`;
   }
   
-  addFileToTopic(key, 'questions', fileObj.title, fileObj.path);
+  addFileToTopic(key, 'questions', fileObj.title, fileObj.path, fileObj.solutionPath);
   if (fileObj.solutionPath) {
      addFileToTopic(key, 'solutions', fileObj.title + ' Solutions', fileObj.solutionPath);
   }
@@ -73,19 +77,19 @@ for (const file of allFiles.questions) {
 
 for (const file of allFiles.reviewQuestions) {
   const key = getTopicKey(file);
-  const solutionFile = file.replace('.pdf', '_Solutions.pdf');
-  const hasSolution = allFiles.reviewSolutions && allFiles.reviewSolutions.includes(solutionFile);
+  const solutionPrefix = file.replace('.pdf', '_Solutions');
+  const solutionFile = allFiles.reviewSolutions.find(f => f.startsWith(solutionPrefix));
   
   const fileObj = {
     title: file.replace('.pdf', '').replace(/_/g, ' '),
     path: `/${dirs.reviewQuestions}/${file}`
   };
 
-  if (hasSolution) {
+  if (solutionFile) {
     fileObj.solutionPath = `/${dirs.reviewSolutions}/${solutionFile}`;
   }
 
-  addFileToTopic(key, 'reviewQuestions', fileObj.title, fileObj.path);
+  addFileToTopic(key, 'reviewQuestions', fileObj.title, fileObj.path, fileObj.solutionPath);
   if (fileObj.solutionPath) {
     addFileToTopic(key, 'solutions', fileObj.title + ' Solutions', fileObj.solutionPath);
   }

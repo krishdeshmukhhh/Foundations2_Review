@@ -79,7 +79,13 @@ export function TopicSection({ id, title, files, order }: TopicSectionProps) {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {files.reviewQuestions.map((file, i) => (
-                <FileCard key={i} title={file.title} path={file.path} type="review" />
+                <FileCard 
+                  key={i} 
+                  title={file.title} 
+                  path={file.path} 
+                  solutionPath={file.solutionPath}
+                  type="review" 
+                />
               ))}
             </div>
           </div>

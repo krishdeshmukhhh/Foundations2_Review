@@ -144,7 +144,13 @@ export function Home() {
               {topics.flatMap(t => t.files.reviewQuestions)
                 .filter(f => !searchQuery || f.title.toLowerCase().includes(searchQuery.toLowerCase()))
                 .map((file, i) => (
-                <FileCard key={`fr-${i}`} title={file.title} path={file.path} type="review" />
+                <FileCard 
+                  key={`fr-${i}`} 
+                  title={file.title} 
+                  path={file.path} 
+                  solutionPath={file.solutionPath}
+                  type="review" 
+                />
               ))}
             </div>
           </section>
