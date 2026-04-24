@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import { topics } from '../data/topics'
 import { TopicSection } from '../components/TopicSection'
 import { FileCard } from '../components/FileCard'
@@ -126,10 +126,62 @@ export function Home() {
   )
 
   return (
-    <div className="max-w-[1400px] mx-auto px-8 pt-32 pb-24 flex flex-col lg:flex-row gap-20 items-start relative">
+    <div className="relative">
 
-      {/* Main Content Area */}
-      <div className="flex-1 min-w-0 order-2 lg:order-1">
+      {/* Fixed Sidebar — stays pinned to right side of viewport on desktop */}
+      <aside
+        className="hidden lg:flex flex-col w-56 fixed overflow-y-auto z-10"
+        style={{
+          top: '50%',
+          transform: 'translateY(-50%)',
+          maxHeight: 'calc(100vh - 8rem)',
+          right: 'max(2rem, calc((100vw - 1400px) / 2 + 2rem))',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+        }}
+      >
+        <div className="mb-4 border-b border-[var(--color-border)] pb-3">
+          <h3 className="text-[15px] font-bold uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
+            Index
+          </h3>
+        </div>
+        <nav className="flex flex-col gap-0">
+          {topics.map(topic => {
+            const isActive = activeId === topic.id
+            const count = fileCount(topic)
+            return (
+              <a
+                key={topic.id}
+                href={`#${topic.id}`}
+                className={`flex items-center justify-between px-2 py-1 text-[11px] rounded transition-all font-medium ${isActive
+                  ? 'text-white bg-white/5'
+                  : 'text-[var(--color-text-secondary)] hover:text-white hover:bg-white/[0.03]'
+                  }`}
+              >
+                <span className="truncate">{topic.title}</span>
+                <span className={`text-[9px] tabular-nums ml-2 shrink-0 ${isActive ? 'text-[var(--color-text-secondary)]' : 'text-[var(--color-text-muted)]'}`}>
+                  {count}
+                </span>
+              </a>
+            )
+          })}
+          <a
+            href="#final-review"
+            className={`flex items-center justify-between px-2 py-1 text-[11px] rounded transition-all font-bold mt-3 pt-3 border-t border-[var(--color-border)] ${activeId === 'final-review'
+              ? 'text-white'
+              : 'text-[var(--color-text-secondary)] hover:text-white'
+              }`}
+          >
+            <span>Final Exam Reviews</span>
+            <span className="text-[9px] tabular-nums ml-2 shrink-0 text-[var(--color-text-muted)]">
+              {topics.flatMap(t => t.files.reviewQuestions).length}
+            </span>
+          </a>
+        </nav>
+      </aside>
+
+      {/* Main Content — right-padded only when sidebar is visible */}
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 pt-28 pb-24 lg:pr-72 xl:pr-80">
 
         {/* Hero Section */}
         <section ref={heroRef} className="mb-24 mt-12">
@@ -210,48 +262,6 @@ export function Home() {
         )}
 
       </div>
-
-      {/* Sidebar Navigation */}
-      <aside className="lg:w-56 flex-shrink-0 lg:sticky lg:top-32 order-1 lg:order-2 hidden lg:block">
-        <div className="mb-8 border-b border-[var(--color-border)] pb-4">
-          <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
-            Index
-          </h3>
-        </div>
-        <nav className="flex flex-col gap-1">
-          {topics.map(topic => {
-            const isActive = activeId === topic.id
-            const count = fileCount(topic)
-            return (
-              <a
-                key={topic.id}
-                href={`#${topic.id}`}
-                className={`flex items-center justify-between px-3 py-2 text-xs rounded-lg transition-all font-medium tracking-wide group ${isActive
-                  ? 'bg-white/5 text-white border border-[var(--color-border-hover)]'
-                  : 'text-[var(--color-text-secondary)] hover:text-white hover:bg-white/[0.03]'
-                  }`}
-              >
-                <span>{topic.title}</span>
-                <span className={`text-[10px] tabular-nums ${isActive ? 'text-[var(--color-text-secondary)]' : 'text-[var(--color-text-muted)]'}`}>
-                  {count}
-                </span>
-              </a>
-            )
-          })}
-          <a
-            href="#final-review"
-            className={`flex items-center justify-between px-3 py-2 text-xs rounded-lg transition-all font-bold tracking-wide mt-4 border-t border-[var(--color-border)] pt-5 ${activeId === 'final-review'
-              ? 'text-white'
-              : 'text-[var(--color-text-secondary)] hover:text-white'
-              }`}
-          >
-            <span>Final Exam Reviews</span>
-            <span className="text-[10px] tabular-nums text-[var(--color-text-muted)]">
-              {topics.flatMap(t => t.files.reviewQuestions).length}
-            </span>
-          </a>
-        </nav>
-      </aside>
     </div>
   )
 }

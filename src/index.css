@@ -52,6 +52,9 @@ body::before {
 
 html { scroll-behavior: smooth; }
 
+/* Hide scrollbar on sidebar while keeping scroll functionality */
+aside::-webkit-scrollbar { display: none; }
+
 .glass {
   background: rgba(5, 5, 5, 0.8);
   backdrop-filter: blur(20px);

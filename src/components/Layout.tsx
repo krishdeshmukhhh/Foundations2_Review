@@ -8,7 +8,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <main className="flex-1">
         {children}
       </main>
-      <footer className="py-12 border-t border-[var(--color-border)] mt-24">
+      <footer className="py-12 border-t border-[var(--color-border)] mt-24 relative z-20 bg-[var(--color-bg-primary)]">
         <div className="max-w-[1400px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-[10px] uppercase tracking-widest text-[var(--color-text-muted)] font-bold text-center md:text-left">
             <p>© {new Date().getFullYear()} Foundations II Archive. Created by Krish Deshmukh.</p>
