@@ -1,9 +1,12 @@
 import { Navbar } from './Navbar'
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa'
+import { ScrollProgress } from './ScrollProgress'
+import { BackToTop } from './BackToTop'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] font-sans">
+      <ScrollProgress />
       <Navbar />
       <main className="flex-1">
         {children}
@@ -30,6 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </footer>
+      <BackToTop />
     </div>
   )
 }

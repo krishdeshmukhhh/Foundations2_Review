@@ -13,6 +13,7 @@ export function Home() {
   const searchRef = useRef<HTMLInputElement>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [activeId, setActiveId] = useState<string>('')
+  const [categoryFilter, setCategoryFilter] = useState<'all' | 'notes' | 'questions' | 'review'>('all')
 
   // ⌘K / Ctrl+K to focus search
   useEffect(() => {
@@ -50,31 +51,34 @@ export function Home() {
   }, [])
 
   const filteredTopics = useMemo(() => {
-    if (!searchQuery.trim()) return topics
-
-    const query = searchQuery.toLowerCase()
     return topics.map(topic => {
-      const filterFiles = (files: any[]) => files.filter(f => f.title.toLowerCase().includes(query))
-      const filtered = {
-        ...topic,
-        files: {
-          notes: filterFiles(topic.files.notes),
-          questions: filterFiles(topic.files.questions),
-          reviewQuestions: filterFiles(topic.files.reviewQuestions),
-          solutions: filterFiles(topic.files.solutions)
-        }
+      const baseFiles = searchQuery.trim()
+        ? (() => {
+            const query = searchQuery.toLowerCase()
+            const filterFiles = (files: any[]) => files.filter(f => f.title.toLowerCase().includes(query))
+            if (topic.title.toLowerCase().includes(query)) return topic.files
+            return {
+              notes: filterFiles(topic.files.notes),
+              questions: filterFiles(topic.files.questions),
+              reviewQuestions: filterFiles(topic.files.reviewQuestions),
+              solutions: filterFiles(topic.files.solutions),
+            }
+          })()
+        : topic.files
+
+      const files = {
+        notes: categoryFilter === 'all' || categoryFilter === 'notes' ? baseFiles.notes : [],
+        questions: categoryFilter === 'all' || categoryFilter === 'questions' ? baseFiles.questions : [],
+        reviewQuestions: categoryFilter === 'all' || categoryFilter === 'review' ? baseFiles.reviewQuestions : [],
+        solutions: baseFiles.solutions,
       }
-      // Also match on topic title
-      if (topic.title.toLowerCase().includes(query)) {
-        return { ...topic }
-      }
-      return filtered
+      return { ...topic, files }
     }).filter(topic =>
       topic.files.notes.length > 0 ||
       topic.files.questions.length > 0 ||
       topic.files.reviewQuestions.length > 0
     )
-  }, [searchQuery])
+  }, [searchQuery, categoryFilter])
 
   // Hero animation — runs once on mount
   useEffect(() => {
@@ -191,9 +195,24 @@ export function Home() {
           <h1 className="text-5xl lg:text-7xl font-semibold tracking-tighter mb-8 leading-[1.05] text-white">
             Foundations II <br /> <span className="text-[var(--color-text-secondary)]">Review Library.</span>
           </h1>
-          <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mb-12 leading-relaxed font-light">
+          <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mb-10 leading-relaxed font-light">
             A meticulously structured archive of course notes, practice questions, and solutions designed to streamline your final exam preparation.
           </p>
+
+          {/* Stats */}
+          <div className="flex items-center gap-4 mb-10">
+            {[
+              { label: 'Topics', value: topics.length },
+              { label: 'Notes', value: topics.flatMap(t => t.files.notes).length },
+              { label: 'Homeworks', value: topics.flatMap(t => t.files.questions).length },
+              { label: 'Review Sessions', value: topics.flatMap(t => t.files.reviewQuestions).length },
+            ].map(stat => (
+              <div key={stat.label} className="text-center">
+                <div className="text-xl font-semibold text-white tabular-nums">{stat.value}</div>
+                <div className="text-[9px] uppercase tracking-widest text-[var(--color-text-muted)] font-bold mt-0.5">{stat.label}</div>
+              </div>
+            ))}
+          </div>
 
           {/* Search Bar */}
           <div className="relative max-w-md group">
@@ -229,6 +248,23 @@ export function Home() {
               {filteredTopics.length === 0 ? 'No results' : `${filteredTopics.length} topic${filteredTopics.length === 1 ? '' : 's'} matched`}
             </p>
           )}
+
+          {/* Category filter pills */}
+          <div className="flex items-center gap-2 mt-6">
+            {(['all', 'notes', 'questions', 'review'] as const).map(cat => (
+              <button
+                key={cat}
+                onClick={() => setCategoryFilter(cat)}
+                className={`px-3 py-1 text-[10px] uppercase tracking-widest font-bold border transition-all ${
+                  categoryFilter === cat
+                    ? 'border-white text-white bg-white/10'
+                    : 'border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-border-hover)] hover:text-[var(--color-text-secondary)]'
+                }`}
+              >
+                {cat === 'all' ? 'All' : cat === 'notes' ? 'Notes' : cat === 'questions' ? 'Practice' : 'Review'}
+              </button>
+            ))}
+          </div>
         </section>
 
         {filteredTopics.length === 0 ? (
