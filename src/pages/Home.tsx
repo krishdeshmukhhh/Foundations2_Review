@@ -35,10 +35,7 @@ export function Home() {
   }, [searchQuery])
 
   useEffect(() => {
-    // Clear previous ScrollTriggers to prevent duplication on re-render
-    ScrollTrigger.getAll().forEach(t => t.kill())
-
-    // Hero Animation
+    // Hero Animation runs only once on mount
     if (heroRef.current) {
       gsap.fromTo(
         heroRef.current.children,
@@ -46,6 +43,11 @@ export function Home() {
         { opacity: 1, y: 0, duration: 1.2, stagger: 0.15, ease: "power4.out", delay: 0.1 }
       )
     }
+  }, [])
+
+  useEffect(() => {
+    // Clear previous ScrollTriggers to prevent duplication
+    ScrollTrigger.getAll().forEach(t => t.kill())
 
     // Scroll Animations for sections and cards
     const sections = document.querySelectorAll('.topic-section')
@@ -53,6 +55,19 @@ export function Home() {
       const cards = section.querySelectorAll('.file-card')
       const header = section.querySelector('h2')
       const subheaders = section.querySelectorAll('h3')
+
+      // If user is actively searching, just make elements instantly visible to prevent jarring flashes
+      if (searchQuery) {
+        const targets = []
+        if (header) targets.push(header)
+        if (subheaders.length) targets.push(subheaders)
+        if (cards.length) targets.push(cards)
+        
+        if (targets.length > 0) {
+          gsap.set(targets, { clearProps: "all" })
+        }
+        return
+      }
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -85,7 +100,7 @@ export function Home() {
         )
       }
     })
-  }, [filteredTopics]) // Re-run animation when filtered items change
+  }, [filteredTopics, searchQuery]) // Re-run scroll triggers when filtered items change
   
   return (
     <div className="max-w-[1400px] mx-auto px-8 pt-32 pb-24 flex flex-col lg:flex-row gap-20 items-start relative">
